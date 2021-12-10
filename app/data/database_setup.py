@@ -3,7 +3,7 @@
 from sqlalchemy_utils import create_database, database_exists
 import app.data.database as db_app
 
-from app.data.models import asset_model, event_model
+from app.data.models import asset_model, event_model, claim_model, note_model
 
 
 class DatabaseSetup():
