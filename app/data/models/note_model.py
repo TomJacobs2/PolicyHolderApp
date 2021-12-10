@@ -5,7 +5,8 @@ from sqlalchemy import Column, Integer, DateTime, ForeignKey, Float, String
 from sqlalchemy.orm import relationship
 
 from app.data.database import Base
-from .claim_model import ClaimModel
+from .user_model import UserModel
+#from .claim_model import ClaimModel
 
 
 class ClaimModel(Base):
@@ -15,5 +16,7 @@ class ClaimModel(Base):
     note_type: Column(Integer, nullable=False)
     note_subject: Column(String)
     note_description: Column(String)
-    date_created = Column(DateTime, default=_datetime.datetime.utcnow())
-    update_created = Column(DateTime, default=_datetime.datetime.utcnow())
+    create_date = Column(DateTime, default=_datetime.datetime.utcnow())
+    update_date = Column(DateTime, default=_datetime.datetime.utcnow())
+    created_by = Column(Integer, ForeignKey(UserModel.id))
+    updated_by = Column(Integer, ForeignKey(UserModel.id))

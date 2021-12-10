@@ -5,6 +5,7 @@ from sqlalchemy import Column, Integer, String, DateTime, ForeignKey, Float
 from sqlalchemy.orm import relationship
 
 from app.data.database import Base
+from .user_model import UserModel
 
 
 class AssetModel(Base):
@@ -15,6 +16,10 @@ class AssetModel(Base):
     description = Column(String(256), nullable=False)
     model_year = Column(String(4))
     mileage = Column(Integer, nullable=False)
-    date_created = Column(DateTime, default=_datetime.datetime.utcnow())
+    create_date = Column(DateTime, default=_datetime.datetime.utcnow())
+    update_date = Column(DateTime, default=_datetime.datetime.utcnow())
+    created_by = Column(Integer, ForeignKey(UserModel.id))
+    updated_by = Column(Integer, ForeignKey(UserModel.id))
 
-    events = relationship("EventModel", back_populates="owner")
+    events = relationship("EventModel", back_populates="event_owner")
+    #claims = relationship("ClaimModel", back_populates="claim_owner")

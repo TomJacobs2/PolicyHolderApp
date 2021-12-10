@@ -6,6 +6,7 @@ from sqlalchemy.orm import relationship
 
 from app.data.database import Base
 from .asset_model import AssetModel
+from .user_model import UserModel
 
 
 class ClaimModel(Base):
@@ -17,8 +18,10 @@ class ClaimModel(Base):
     geo_long = Column(Float, nullable=True)
     claim_description: Column(String)
     incident_date: Column(DateTime, nullable=False)
-    date_created = Column(DateTime, default=_datetime.datetime.utcnow())
-    update_created = Column(DateTime, default=_datetime.datetime.utcnow())
     asset_id = Column(Integer, ForeignKey(AssetModel.id))
+    create_date = Column(DateTime, default=_datetime.datetime.utcnow())
+    update_date = Column(DateTime, default=_datetime.datetime.utcnow())
+    created_by = Column(Integer, ForeignKey(UserModel.id))
+    updated_by = Column(Integer, ForeignKey(UserModel.id))
 
     #claim_owner = relationship("AssetModel", back_populates="claims")

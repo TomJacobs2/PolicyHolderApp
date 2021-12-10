@@ -21,7 +21,7 @@ class AssetUpdate(AssetBase):
 
 class AssetInDBBase(AssetBase):
     id: int
-    date_create: str
+    create_date: str
 
     class Config:
         orm_mode = True

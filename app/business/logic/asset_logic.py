@@ -1,5 +1,6 @@
 #  Copyright (c) Thomas Jacobs. All Rights Reserved.
 
+from app.data.data_app import get_db
 from app.data.database import SessionLocal
 from app.data.commands.asset_command import asset_cmd
 

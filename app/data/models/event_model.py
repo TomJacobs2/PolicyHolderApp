@@ -15,8 +15,8 @@ class EventModel(Base):
     event_type: Column(Integer, nullable=False)
     geo_lat = Column(Float, nullable=True)
     geo_long = Column(Float, nullable=True)
-    date_created = Column(DateTime, default=_datetime.datetime.utcnow())
+    create_date = Column(DateTime, default=_datetime.datetime.utcnow())
     event_date = Column(DateTime)
     asset_id = Column(Integer, ForeignKey(AssetModel.id))
 
-    owner = relationship("AssetModel", back_populates="events")
+    event_owner = relationship("AssetModel", back_populates="events")
