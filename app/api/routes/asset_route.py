@@ -10,19 +10,17 @@ router = APIRouter(prefix="/asset",
 
 logic = AssetLogic()
 
+
 @router.get("/", tags=["assets"])
 async def get_action():
-    logic.process_get_all()
-    return {"msg": "get asset route"}
+    return logic.process_get_all()
 
 
 @router.get("/{asset_id}", tags=["assets"])
 async def get_action(asset_id: int):
-    logic.process_get_asset(asset_id)
-    return {"msg": "get asset route with asset id "}
+    return logic.process_get_asset(asset_id)
 
 
 @router.post("/", tags=["assets"])
 async def post_action():
-    logic.process_post()
-    return {"msg": "post asset route"}
+    return logic.process_post()

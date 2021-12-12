@@ -4,7 +4,7 @@ import datetime as _datetime
 from sqlalchemy import Column, Integer, String, DateTime, ForeignKey, Float, Boolean
 from sqlalchemy.orm import relationship
 
-from app.data.database import Base
+from app.data.database_app import Base
 
 
 class UserModel(Base):

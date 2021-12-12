@@ -4,8 +4,9 @@ import datetime as _datetime
 from sqlalchemy import Column, Integer, String, DateTime, ForeignKey, Float
 from sqlalchemy.orm import relationship
 
-from app.data.database import Base
-from .user_model import UserModel
+from app.data.database_app import Base
+
+#from .user_model import UserModel
 
 
 class AssetModel(Base):
@@ -18,8 +19,8 @@ class AssetModel(Base):
     mileage = Column(Integer, nullable=False)
     create_date = Column(DateTime, default=_datetime.datetime.utcnow())
     update_date = Column(DateTime, default=_datetime.datetime.utcnow())
-    created_by = Column(Integer, ForeignKey(UserModel.id))
-    updated_by = Column(Integer, ForeignKey(UserModel.id))
+    #created_by = Column(Integer, ForeignKey(UserModel.id))
+    #updated_by = Column(Integer, ForeignKey(UserModel.id))
 
     events = relationship("EventModel", back_populates="event_owner")
     #claims = relationship("ClaimModel", back_populates="claim_owner")

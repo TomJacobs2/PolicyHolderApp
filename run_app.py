@@ -3,9 +3,12 @@
 import uvicorn
 
 from app.api.fastapi_app import FastAPIApp
-from app.data.database_setup import DatabaseSetup
+from app.data.database_app import database_app
 
-app = FastAPIApp().get_app()
-DatabaseSetup().create_database()
 
-uvicorn.run(app, host="127.0.0.1", port=5000)
+data_app = database_app
+data_app.create_database()
+fast_app = FastAPIApp().get_app()
+
+
+uvicorn.run(fast_app, host="127.0.0.1", port=5000)
