@@ -43,8 +43,9 @@ class DatabaseApp():
 
     def initial_load(self):
         print("load data")
-        from app.data.load.asset_load import initial_asset_load
-        initial_asset_load()
+        from app.data.load import asset_load, user_load
+        asset_load.initial_asset_load()
+        user_load.initial_user_load()
 
 
 database_app = DatabaseApp()

@@ -7,7 +7,6 @@ from app.data.commands.asset_command import asset_cmd
 
 class AssetLogic():
     def __init__(self):
-        self.command = asset_cmd
         self.session = database_app.get_session()
 
     def process_get_all(self):
