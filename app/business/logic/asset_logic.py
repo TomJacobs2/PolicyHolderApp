@@ -1,5 +1,6 @@
 #  Copyright (c) Thomas Jacobs. All Rights Reserved.
 
+from typing import Any
 from app.data.database_app import database_app
 from app.data.commands.asset_command import asset_cmd
 
@@ -17,6 +18,7 @@ class AssetLogic():
         print(f"Asset Logic: get asset with id of {asset_id}")
         return asset_cmd.get_one(db=self.session, model_id=asset_id)
 
-    def process_post(self):
-        #asset_cmd.update()
+    def process_post(self, request: Any):
+        asset_cmd.create(db=self.session, schema_in=request)
         print("Asset Logic: post request called")
+        print(request)

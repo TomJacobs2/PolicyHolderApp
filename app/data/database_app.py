@@ -30,10 +30,21 @@ class DatabaseApp():
     def get_database_uri(self):
         return self.database_uri
 
+    def does_database_exists(self):
+        results = database_exists(self.database_uri)
+        print(results)
+        return results
+
     def create_database(self):
         if not database_exists(self.database_uri):
+            print("create database")
             create_database(self.database_uri)
             self.base.metadata.create_all(bind=self.engine)
+
+    def initial_load(self):
+        print("load data")
+        from app.data.load.asset_load import initial_asset_load
+        initial_asset_load()
 
 
 database_app = DatabaseApp()

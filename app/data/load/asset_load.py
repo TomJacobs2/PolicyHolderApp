@@ -1,13 +1,10 @@
 #  Copyright (c) Thomas Jacobs. All Rights Reserved.
 
-from sqlalchemy.orm import Session
-from app.data.models.asset_model import AssetModel
 from app.schemas.asset_schema import AssetCreate, AssetUpdate
-from app.data.commands.asset_command import AssetCommand
+from app.business.logic.asset_logic import AssetLogic
 
-def initial_asset_load(db: Session):
-    cmd = AssetCommand(model=AssetModel)
-    session = Session()
+def initial_asset_load():
+    logic = AssetLogic()
     raw_data = {"asset_tag": "tag1234", "description": "Lambo", "mileage": 925, "model_year": "2021"}
     data = AssetCreate(**raw_data)
-    cmd.create(db=session, schema_in=data)
+    logic.process_post(request=data)

@@ -7,7 +7,10 @@ from app.data.database_app import database_app
 
 
 data_app = database_app
-data_app.create_database()
+if not data_app.does_database_exists():
+    data_app.create_database()
+    data_app.initial_load()
+
 fast_app = FastAPIApp().get_app()
 
 

@@ -31,7 +31,7 @@ class BaseCommand(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
         db_model = self.model(**model_data)
         db.add(db_model)
         db.commit()
-        db.refresh()
+        #db.refresh()
         return db_model
 
     def update(self, db: Session, *, model_type: ModelType, schema_in: Union[UpdateSchemaType, Dict[str, Any]]) -> ModelType:
