@@ -7,7 +7,7 @@ from sqlalchemy_utils import create_database, database_exists
 
 Base = declarative.declarative_base()
 
-from app.data.models import asset_model, claim_model, event_model, note_model, user_model
+from app.data.models import asset_model, claim_model, event_model, note_model, user_model, oauth_model
 
 
 class DatabaseApp():

@@ -3,6 +3,7 @@
 from typing import Any
 from app.data.database_app import database_app
 from app.data.commands.asset_command import asset_cmd
+from app.data.commands.oauth_command import oauth_cmd
 
 
 class AssetLogic():
